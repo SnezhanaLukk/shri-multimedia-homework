@@ -24,6 +24,24 @@ body {
 }
 
 .stories {
+    display: flex;
+    max-width: inherit;
+    transition: transform 0.4s ease;
+}
+
+.stories__story {
+    display: flex;
+    align-items: center;
+    position: relative;
+    max-width: inherit;
+}
+
+.stories__video {
+    max-width: inherit;
+    object-fit: cover;
+}
+/* Контейнер слайдов */
+/* .stories {
     position: relative;
     display: flex;
     width: 100%;
@@ -49,7 +67,7 @@ body {
     max-height: 100%;
     object-fit: contain;
     background: black;
-}
+} */
 
 .controls {
     display: flex;
