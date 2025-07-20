@@ -76,6 +76,7 @@
             const slider = document.querySelector(".stories");
             const progressContainer = document.querySelector(".progress");
             const stopScreen = document.querySelector(".stop-screen");
+            const img = document.querySelector(".stop-screen__button");
             const videosSrc = [
                 "http://localhost:3000/assets/1.mp4",
                 "http://localhost:3000/assets/2.mp4",
@@ -228,11 +229,15 @@
                     !reactionsPanel.classList.contains("hidden");
 
                 if (isPanelVisible) {
-                    overlay.classList.remove("hidden");
                     video.pause();
+                    overlay.classList.remove("hidden");
+                    stopScreen.classList.remove("stop-screen_playing");
+                    img.classList.add("stop-screen__button__stop");
                 } else {
-                    overlay.classList.add("hidden");
                     video.play();
+                    overlay.classList.add("hidden");
+                    img.classList.remove("stop-screen__button__stop");
+                    stopScreen.classList.add("stop-screen_playing");
                 }
             });
 
@@ -270,6 +275,8 @@
                         ];
                     const video = videos[currentIndex];
                     overlay.classList.add("hidden");
+                    stopScreen.classList.add("stop-screen_playing");
+                    img.classList.remove("stop-screen__button__stop");
                     video.play();
                 });
             });
@@ -278,16 +285,17 @@
                 slider.insertAdjacentHTML(
                     "beforeend",
                     `<div class="stories__story">
-                <video id="video-${id}" class="stories__video" src="${src}"></video>
-                <div class="reaction-overlay hidden"></div>
-            </div>`
+                        <video id="video-${id}" class="stories__video" src="${src}"></video>
+                        <div class="reaction-overlay hidden"></div>
+                    </div>
+                    `
                 );
 
                 progressContainer.insertAdjacentHTML(
                     "beforeend",
                     `<span class="progress__bar">
-                <span id="progress-${id}" class="progress__bar-value"></span>
-            </span>`
+                        <span id="progress-${id}" class="progress__bar-value"></span>
+                    </span>`
                 );
 
                 return getStory(id);

@@ -52,7 +52,7 @@ body {
 
 .controls {
     display: flex;
-
+    z-index: 1;
     position: absolute;
     right: 0;
     bottom: 0;
@@ -163,6 +163,9 @@ body {
     cursor: pointer;
 }
 
+.stop-screen__button__stop {
+    display: none;
+}
 .stop-screen__plate {
     position: absolute;
     top: 0;
@@ -261,7 +264,7 @@ body {
     transition-duration: 500ms;
     transition-property: transform;
 
-    z-index: 2;
+    z-index: 1;
 }
 
 .show-reactions-btn:hover {
