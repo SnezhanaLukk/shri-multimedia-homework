@@ -37,10 +37,10 @@
                 <span class="reaction" data-emoji="😂">😂</span>
                 <span class="reaction" data-emoji="😮">😮</span>
                 <span class="reaction" data-emoji="😢">😢</span>
-                <!-- <span class="reaction" data-emoji="🌚">🌚</span>
+                <span class="reaction" data-emoji="🌚">🌚</span>
                 <span class="reaction" data-emoji="👍">👍</span>
                 <span class="reaction" data-emoji="🥹">🥹</span>
-                <span class="reaction" data-emoji="😡">😡</span> -->
+                <span class="reaction" data-emoji="😡">😡</span>
             </div>
             <div class="controls">
                 <div class="controls__buttons">
@@ -183,9 +183,24 @@
                 return document.getElementById(`video-${id}`);
             }
 
+            const reactionsPanel = document.querySelector(".reactions-panel");
+
             function togglePlay() {
                 const video = videos[currentIndex];
                 if (!video) return;
+
+                const overlay =
+                    document.querySelectorAll(".reaction-overlay")[
+                        currentIndex
+                    ];
+                const reactionsPanel =
+                    document.querySelector(".reactions-panel");
+                const isPanelVisible =
+                    !reactionsPanel.classList.contains("hidden");
+                if (isPanelVisible) {
+                    overlay.classList.add("hidden");
+                    reactionsPanel.classList.add("hidden");
+                }
 
                 if (video.paused) {
                     video.play();
@@ -199,7 +214,6 @@
             const showReactionsBtn = document.querySelector(
                 ".show-reactions-btn"
             );
-            const reactionsPanel = document.querySelector(".reactions-panel");
 
             showReactionsBtn.addEventListener("click", () => {
                 reactionsPanel.classList.toggle("hidden");
